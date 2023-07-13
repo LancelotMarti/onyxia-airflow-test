@@ -38,5 +38,5 @@ dags:
         depth: 1
         maxFailures: 0
         subPath: ""
-        sshKeySecret: airflow-git-ssh-secret
+        sshKeySecret: airflow-ssh-git-secret-v2
         credentialsSecret: git-credentials
