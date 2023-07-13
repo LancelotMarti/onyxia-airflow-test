@@ -17,15 +17,11 @@ ingress.web.hosts: ["bfs-airflow-example.lab.sspcloud.fr"]
 # to access pod
 kubectl exec <pod_name> ls
 
-## Currently, not sure if it works
-
-### git-sync setup
+##git-sync setup
+NOTE : You need to create a ssh key on your repo git
 
 # to creade a secret called airflow-git-ssh-secret
-kubectl create secret generic airflow-git-ssh-secret   
-    --from-file=gitSshKey=/home/onyxia/.ssh/id_rsa   \
-    --from-file=known_hosts=/home/onyxia/.ssh/known_hosts \   
-    --from-file=id_ed25519.pub=/home/onyxia/.ssh/id_rsa.pub
+kubectl create secret generic airflow-ssh-git-secret-v2 --from-file=gitSshKey=/home/onyxia/.ssh/id_rsa
 
 # to see kubectl secrets
 kubectl get secrets
@@ -36,7 +32,7 @@ dags:
         enabled: true
 
         # git repo clone url
-        repo: ssh://git@github.com:LancelotMarti/onyxia-airflow-test.git
+        repo: ssh://git@github.com/LancelotMarti/onyxia-airflow-test.git
         branch: main
         rev: HEAD
         depth: 1
