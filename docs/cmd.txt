@@ -21,11 +21,21 @@ kubectl exec <pod_name> ls
 NOTE : You need to create a ssh key on your repo git
 
 # to creade a secret called airflow-git-ssh-secret
+Steps:
+1. Generate the ssh key
+ssh-keygen -t rsa
+
+2. In your repo, add the ssh-key
+
+3. create the secret in kubernetes
 kubectl create secret generic airflow-ssh-git-secret-v2 --from-file=gitSshKey=/home/onyxia/.ssh/id_rsa
 
 # to see kubectl secrets
 kubectl get secrets
 
+!!!!! the ssh repo must be adapted once copied                 !!!
+!!!!! two / should be added before git@github                  !!!!
+!!!!! And the ":" should be replaced by "/" before your name   !!!
 # in values.yaml change :
 dags:
     gitSync:
