@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
 from datetime import datetime
 
 def print_test():
@@ -8,7 +8,7 @@ def print_test():
 dag = DAG(
     "github_sync_test",
     description = "github_sync_test",
-    schedule_interval = "0 0 * * *",
+    schedule = "0 0 * * *",
     start_date = datetime(2023,1,1),
     catchup = False
 )
