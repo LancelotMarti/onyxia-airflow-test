@@ -25,7 +25,7 @@ def polars_test_task():
 with DAG(
     dag_id="polars_test_dag",
     start_date=datetime(2026, 1, 1),
-    schedule_interval=None,  # Run manually
+    schedule=None,  # Run manually
     catchup=False,
     tags=["test", "polars"]
 ) as dag:
