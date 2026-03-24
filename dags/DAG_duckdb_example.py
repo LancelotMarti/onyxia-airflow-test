@@ -33,5 +33,10 @@ with DAG(
 
     run_duckdb_test = PythonOperator(
         task_id='run_duckdb_test',
-        python_callable=test_duckdb
+        python_callable=test_duckdb,
+        executor_config={
+            "KubernetesExecutor": {
+                "image": "lancelotmarti/airflow-executor:v0.3"
+            }
+        }
     )
